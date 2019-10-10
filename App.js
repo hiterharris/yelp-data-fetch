@@ -32,7 +32,6 @@ export default class App extends Component {
     console.log(this.state.data);
     return (
       <View style={styles.container}>
-        <Text>Yelp</Text>
         <Image style={styles.image} source={require('./assets/yelp.png')} />
       </View>
     );
