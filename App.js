@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import axios from 'axios';
+
+const { width, height } = Dimensions.get('window');
 
 const config = {
   headers: {'Authorization': 'Bearer 4TwtB1xSvyHl5nDWqmOPj_3cHANyKsn8XhO2lBR2xdjRWs52PivbW-wdvQ92uWNIYR76VeQxXfSyh7jREVLe_HBd31tuPk08L5lIsHyEb449yLFbeGnPzbZGDaz_XHYx'},
@@ -33,7 +35,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <Text>Yelp</Text>
-        <Text></Text>
+        <Image style={styles.image} source={require('./assets/yelp.png')} />
       </View>
     );
   }
@@ -44,5 +46,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  image: {
+    width: '97.5%',
+    height: '22%',
   },
 });
