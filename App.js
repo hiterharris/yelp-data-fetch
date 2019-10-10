@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import axios from 'axios';
 
-const { width, height } = Dimensions.get('window');
-
 const config = {
   headers: {'Authorization': 'Bearer 4TwtB1xSvyHl5nDWqmOPj_3cHANyKsn8XhO2lBR2xdjRWs52PivbW-wdvQ92uWNIYR76VeQxXfSyh7jREVLe_HBd31tuPk08L5lIsHyEb449yLFbeGnPzbZGDaz_XHYx'},
   params: {
