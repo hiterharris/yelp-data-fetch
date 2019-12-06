@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import axios from 'axios';
 
 const config = {
@@ -14,13 +14,15 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null,
+      data: '',
     }
   }
 
   getData() {
     axios.get('https://api.yelp.com/v3/businesses/search', config)
-    .then(response => response )
+      // .then(response => {
+      //   return response;
+      // })
     .then(data => this.setState({ data }))
   }
 
@@ -29,10 +31,11 @@ export default class App extends Component {
   }
   
   render() {
-    console.log(this.state.data);
+    const data = this.state.data.data;
+    console.log(data);
     return (
       <View style={styles.container}>
-        <Image style={styles.image} source={require('./assets/yelp.png')} />
+        <Text>Response: </Text>
       </View>
     );
   }
