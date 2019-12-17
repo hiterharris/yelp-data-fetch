@@ -12,7 +12,7 @@ import {
 // import axios from 'axios';
 
 
-panResponder = () => {
+panResponder = (props) => {
     this.pan = new Animated.ValueXY();
     this.cardPanResponder = PanResponder.create({
         onStartShouldSetPanResponder: () => true,
@@ -27,7 +27,7 @@ panResponder = () => {
                 Animated.decay(this.pan, {
                     velocity: { x: 3 * direction, y: 0 },
                     deceleration: 0.995,
-                }).start(nextCard);
+                }).start(props.onSwipeOff);
             } else {
                 Animated.spring(this.pan, {
                     toValue: { x: 0, y: 0 },
@@ -37,14 +37,10 @@ panResponder = () => {
         },
     });
 }
-panResponder();
 
 export default function Card(props) {
 
-    const [profileIndex, setProfileIndex] = useState(0);
-    nextCard = () => {
-        setProfileIndex(profileIndex + 1);
-    }
+    panResponder(props);
 
     const rotateCard = this.pan.x.interpolate({
         inputRange: [-200, 0, 200],
@@ -58,8 +54,9 @@ export default function Card(props) {
         ],
     }
 
-    const restaurant = props.businessList;
-    console.log(restaurant);
+
+    const restaurant = props.restaurant;
+    console.log(props);
 
     return (
         <Animated.View

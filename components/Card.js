@@ -20,7 +20,7 @@ export default function Card() {
             },
         })
         .then(response => {
-            setBusinessList(response.data.businesses[0]);
+            setBusinessList(response.data.businesses);
         })
         .catch(error => {
             console.log('DATA NOT RETURNED', error);
@@ -32,16 +32,17 @@ export default function Card() {
         setProfileIndex(profileIndex + 1);
     }
 
-    const restaurant = businessList;
-    console.log(restaurant);
-
     {/* {businessList.map( (restaurant, index) => {
     return <Text key={index}>{restaurant.name}</Text>
     })} */}
 
     return (
         <View>
-            <Card2 businessList={businessList} />
+            {businessList.slice(profileIndex, profileIndex + 5).reverse().map((restaurant, index) => {
+                return (
+                    <Card2 restaurant={restaurant} key={restaurant.id} onSwipeOff={this.nextCard} />
+                );
+            })}
         </View>
     )
 }
